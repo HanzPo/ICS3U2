@@ -2,6 +2,7 @@ import java.util.*;
 
 public class PaintStore {
 
+	// Defines ASCII art for use in the rest of the program
 	public static String[] asciiArt = {
 			"⠄⠄⣰⣾⣿⣿⣿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆⠄⠄ "
 			,"⠄⠄⣿⣿⣿⡿⠋⠄⡀⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠋⣉⣉⣉⡉⠙⠻⣿⣿⠄⠄ "
@@ -25,9 +26,9 @@ public class PaintStore {
 			,"⠄⠄⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣾⣿⣿⡿⠟⠄⠄ " };
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner input = new Scanner(System.in);
-
+		
+		// Prints out options for the user
 		System.out.println("Paint Store Display Centre");
 		System.out.println();
 		System.out.println("1) Make a Rectangle Paint Can Display");
@@ -37,6 +38,7 @@ public class PaintStore {
 		System.out.println("5) Signature Row Arrangement Ways");
 		System.out.println("6) Make an X display");
 
+		// Asks for user input and passes them into methods
 		int userSelection = Integer.parseInt(input.nextLine());
 		switch (userSelection) {
 		case 1:
@@ -74,6 +76,7 @@ public class PaintStore {
 		input.close();
 	}
 
+	// Creates rectangles
 	public static void rectangle(int rows, int columns) {
 		for (int i = 0; i < rows; i++) {
 			for (int k = 0; k < asciiArt.length; k++) {
@@ -85,6 +88,7 @@ public class PaintStore {
 		}
 	}
 
+	// Creates pyramid
 	public static void pyramid(int rows) {
 		int i = 0;
 		while (i < (rows * 2)) {
@@ -101,6 +105,7 @@ public class PaintStore {
 		}
 	}
 
+	// Creates pyramid but also based on whether it's part of a diamond or not
 	public static void pyramidDown(int rows, boolean isDiamond) {
 		int i = rows * 2;
 		while (i > 0) {
@@ -127,16 +132,18 @@ public class PaintStore {
 				else {
 					System.out.println();
 				}
-				
+
 			}
 			i -= 2;
 		}
 	}
 
+	// Creates an X
 	public static void myX (int width, int height) {
 		if (width % 2 == 0 || height % 2 == 0) {
 			System.out.println("Please enter odd numbers for the dimensions of the X");
 		}
+		// Makes a proper X if width and height are the same
 		else if (width == height){
 			for (int i = 0; i < height; i++) {
 				for (int k = 0; k < asciiArt.length; k++) {
@@ -154,6 +161,7 @@ public class PaintStore {
 				}
 			}
 		}
+		// Otherwise it creates a very empty looking X because I wasn't able to figure out a better X
 		else {
 			for (int i = 0; i < height; i++) {
 				for (int k = 0; k < asciiArt.length; k++) {
@@ -173,6 +181,7 @@ public class PaintStore {
 		}
 	}
 
+	// Creates diamond that really just points to the diamond methods
 	public static void diamond(int rows) {
 		if (rows % 2 == 0) {
 			System.out.println("Please enter an odd number of rows");
@@ -183,7 +192,8 @@ public class PaintStore {
 			pyramidDown(halfRows, true);
 		}
 	}
-	
+
+	// Calculates factorial
 	public static void factorial(int n) {
 		int total = 1;
 		for (int i = n; i > 0; i--) {
