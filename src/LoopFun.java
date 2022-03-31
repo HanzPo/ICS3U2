@@ -81,6 +81,56 @@ public class LoopFun {
 			}
 			System.out.printf("%n");
 		}
+		
+		System.out.println();
+		
+		// 11. Count from 3 to 30 by 3's
+		for (int k = 3; k <= 30; k+=3) {
+			System.out.printf("%d%n", k);
+		}
+		
+		System.out.println();
+		
+		// 12. Count from 4 to 104 by 10's
+		int l = 4;
+		do {
+			System.out.println(l);
+			l += 10;
+		} while (l <= 104);
+		
+		System.out.println();
+		
+		// 13. Write a while loop to create the following output
+		l = 1;
+		
+		while (l <= 17) {
+			if (l == 17) {
+				System.out.printf("%d%n", l);
+			}
+			else {
+				System.out.printf("%d, ", l);
+			}
+			
+			l += 4;
+		}
+		
+		System.out.println();
+		
+		// 14. Write a for loop to create the following output
+		// 1
+		// 3
+		// 6
+		// 10
+		// 15
+		// 21
+		
+		int lastOutput = 0;
+		for (int k = 1; k <= 6; k++) {
+			System.out.println(lastOutput + k);
+			lastOutput += k;
+		}
+		
+		System.out.println();
 	}
 
 }
