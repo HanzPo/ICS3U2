@@ -21,6 +21,7 @@ public class WorkingWithStrings {
 		System.out.println(alternateCase(userInput));
 		System.out.println(countVowels(userInput));
 		System.out.println(vowelToUpper(userInput));
+		System.out.println(reverseString(userInput));
 	}
 
 	public static int countWords(String value) {
@@ -68,6 +69,16 @@ public class WorkingWithStrings {
 				valueArray[i] = Character.toUpperCase(value.charAt(i));
 			else
 				valueArray[i] = Character.toLowerCase(value.charAt(i));
+		}
+		
+		return String.valueOf(valueArray);
+	}
+	
+	public static String reverseString (String value) {
+		char[] valueArray = new char[value.length()];
+		
+		for (int i = 0; i < value.length(); i++) {
+			valueArray[i] = value.charAt(value.length() - i - 1);
 		}
 		
 		return String.valueOf(valueArray);
