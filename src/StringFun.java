@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class StringFun {
 
 	public static void main(String[] args) {
