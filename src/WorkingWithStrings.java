@@ -15,13 +15,17 @@ public class WorkingWithStrings {
 		System.out.println("======================");
 		System.out.println(userInput);
 		
-		System.out.println(userInput.toUpperCase());
-		System.out.println(userInput.toLowerCase());
-		System.out.println(countWords(userInput));
-		System.out.println(alternateCase(userInput));
-		System.out.println(countVowels(userInput));
-		System.out.println(vowelToUpper(userInput));
-		System.out.println(reverseString(userInput));
+		System.out.println("       Upper: " + userInput.toUpperCase());
+		System.out.println("       Lower: " + userInput.toLowerCase());
+		System.out.println("     # Words: " + countWords(userInput));
+		System.out.println("    Alt Case: " + alternateCase(userInput));
+		System.out.println("    # Vowels: " + countVowels(userInput));
+		System.out.println("  Vowel Case: " + vowelToUpper(userInput));
+		System.out.println("     Reverse: " + reverseString(userInput));
+		
+		String[] searchWords = new String[] { "be", "the" };
+		
+		System.out.println(countWords(userInput, searchWords));
 	}
 
 	public static int countWords(String value) {
@@ -82,5 +86,20 @@ public class WorkingWithStrings {
 		}
 		
 		return String.valueOf(valueArray);
+	}
+	
+	public static int countWords(String value, String[] searchWords) {
+		int wordCount = 0;
+		for (int i = 0; i < searchWords.length; i++) {
+			int idx = 0;
+			while (idx != -1) {
+				idx = value.toLowerCase().indexOf(searchWords[i].toLowerCase(), idx + 1);
+				if (idx != -1) {
+					wordCount++;
+				}
+			}
+		}
+		
+		return wordCount;
 	}
 }
