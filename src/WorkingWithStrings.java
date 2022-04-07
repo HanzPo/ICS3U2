@@ -13,7 +13,7 @@ public class WorkingWithStrings {
 		input.close();
 		
 		System.out.println("Output:");
-		System.out.println("======================");
+		System.out.println("==========================================================================");
 		
 		if (countWords(userInput) > 1) {
 			System.out.println("     You entered: " + userInput);
@@ -111,7 +111,7 @@ public class WorkingWithStrings {
 	
 	public static void wordStack(String word) {
 		for (int i = 1; i <= (word.length() / 2); i++) {
-			for (int j = 0; j < (-1 * i) + word.length() / 2; j++)
+			for (int j = 0; j < (word.length() / 2) - i; j++)
 			{
 				System.out.print(" ");
 			}
