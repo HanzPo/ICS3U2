@@ -8,7 +8,7 @@ public class WorkingWithStrings {
 		String[] searchWords = new String[] { "be", "the" };
 		
 		System.out.println("Please enter a word with an even number of letters, or a phrase:");
-		String userInput = input.nextLine();
+		String userInput = input.nextLine().trim();
 		
 		input.close();
 		
@@ -96,13 +96,13 @@ public class WorkingWithStrings {
 	
 	public static int countWords(String value, String[] searchWords) {
 		int wordCount = 0;
+		String wordToCheck = " " + value.toLowerCase() + " ";
+		
 		for (int i = 0; i < searchWords.length; i++) {
-			int idx = 0;
+			int idx = wordToCheck.indexOf((" " + searchWords[i].trim() + " ").toLowerCase());
 			while (idx != -1) {
-				idx = value.toLowerCase().indexOf(searchWords[i].toLowerCase(), idx + 1);
-				if (idx != -1) {
-					wordCount++;
-				}
+				idx = wordToCheck.indexOf((" " + searchWords[i].trim() + " ").toLowerCase(), idx + 1);
+				wordCount++;
 			}
 		}
 		
