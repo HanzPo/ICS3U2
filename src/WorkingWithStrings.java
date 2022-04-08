@@ -1,17 +1,22 @@
+// Imports
 import java.util.*;
 
 public class WorkingWithStrings {
 
 	public static void main(String[] args) {
 		
-		Scanner input = new Scanner(System.in);
-		String[] searchWords = new String[] { "be", "the" };
+		Scanner input = new Scanner(System.in); // Sets up scanner
+		String[] searchWords = new String[] { "be", "the" }; // Creates array of words to check for from the user's input
 		
-		System.out.println("Please enter a word with an even number of letters, or a phrase:");
-		String userInput = input.nextLine().trim();
+		welcome(); // Calls welcome method which prints ascii art
+		
+		
+		System.out.println("Please enter a word with an even number of letters, or a phrase (up to 6 words):"); // Asks user for input
+		String userInput = input.nextLine().trim().replaceAll("\\s+", " "); // Takes user input, removes leading & trailing whitespaces, and ensures that all spaces are of a consistent length
 		
 		input.close();
 		
+		// Prints output
 		System.out.println("Output:");
 		System.out.println("==========================================================================");
 		
@@ -87,8 +92,10 @@ public class WorkingWithStrings {
 	public static String reverseString (String value) {
 		char[] valueArray = new char[value.length()];
 		
-		for (int i = 0; i < value.length(); i++) {
+		int i = 0;
+		while (i < value.length()) {
 			valueArray[i] = value.charAt(value.length() - i - 1);
+			i++;
 		}
 		
 		return String.valueOf(valueArray);
@@ -117,5 +124,25 @@ public class WorkingWithStrings {
 			}
 			System.out.printf("%s%n", word.substring(((word.length() / 2) - i), ((word.length() / 2) + i)));
 		}
+	}
+	
+	public static void welcome() {
+		String[] asciiArt = new String[] {  "		     ⠀⠀⠀⠀⠀⢀⣠⣤⣴⣶⣶⣶⣶⣶⠶⣶⣤⣤⣀⠀⠀⠀⠀⠀⠀",
+	                                     	"		⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⠁⠀⢀⠈⢿⢀⣀⠀⠹⣿⣿⣿⣦⣄⠀⠀⠀",
+		                                    "		⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⠿⠀⠀⣟⡇⢘⣾⣽⠀⠀⡏⠉⠙⢛⣿⣷⡖⠀",
+	                                     	"		⠀⠀⠀⠀⠀⣾⣿⣿⡿⠿⠷⠶⠤⠙⠒⠀⠒⢻⣿⣿⡷⠋⠀⠴⠞⠋⠁⢙⣿⣄",
+	                                    	"		⠀⠀⠀⠀⢸⣿⣿⣯⣤⣤⣤⣤⣤⡄⠀⠀⠀⠀⠉⢹⡄⠀⠀⠀⠛⠛⠋⠉⠹⡇",
+	                                     	"		⠀⠀⠀⠀⢸⣿⣿⠀⠀⠀⣀⣠⣤⣤⣤⣤⣤⣤⣤⣼⣇⣀⣀⣀⣛⣛⣒⣲⢾⡷",
+	                                    	"		⢀⠤⠒⠒⢼⣿⣿⠶⠞⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀⣼⠃",
+	                                    	"		⢮⠀⠀⠀⠀⣿⣿⣆⠀⠀⠻⣿⡿⠛⠉⠉⠁⠀⠉⠉⠛⠿⣿⣿⠟⠁⠀⣼⠃⠀",
+	                                    	"		⠈⠓⠶⣶⣾⣿⣿⣿⣧⡀⠀⠈⠒⢤⣀⣀⡀⠀⠀⣀⣀⡠⠚⠁⠀⢀⡼⠃⠀⠀",
+											"		⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣷⣤⣤⣤⣤⣭⣭⣭⣭⣭⣥⣤⣤⣤⣴⣟⠁"};
+		
+		for (int i = 0; i < asciiArt.length; i++) {
+			System.out.println(asciiArt[i]);
+		}
+		System.out.println();
+		System.out.println("Welcome to Change That Message");
+		System.out.println();
 	}
 }
