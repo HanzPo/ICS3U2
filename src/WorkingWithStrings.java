@@ -37,6 +37,10 @@ public class WorkingWithStrings {
 		else {
 			System.out.println("Please enter a valid input");
 		}
+		
+		StringBuilder myString = new StringBuilder();
+		myString.append("");
+		System.out.println(myString.toString());
 	}
 
 	public static int countWords(String value) {
@@ -48,17 +52,18 @@ public class WorkingWithStrings {
 	}
 	
 	public static String alternateCase(String value) {
-		char[] alternatedString = new char[value.length()];
+		StringBuilder alternatedString = new StringBuilder(value.length());
 		
 		for (int i = 0; i < value.length(); i++) {
 			if (i % 2 == 0) {
-				alternatedString[i] = Character.toUpperCase(value.charAt(i));
+				alternatedString.append(Character.toUpperCase(value.charAt(i)));
 			}
 			else {
-				alternatedString[i] = Character.toLowerCase(value.charAt(i));
+				alternatedString.append(Character.toLowerCase(value.charAt(i)));
 			}
 		}
-		return String.valueOf(alternatedString);
+		
+		return alternatedString.toString();
 	}
 	
 	public static boolean isVowel(char value) {
@@ -77,28 +82,28 @@ public class WorkingWithStrings {
 	}
 	
 	public static String vowelToUpper (String value) {
-		char[] valueArray = new char[value.length()];
+		StringBuilder valueToModify = new StringBuilder(value.length());
 		
 		for (int i = 0; i < value.length(); i++) {
 			if (isVowel(value.charAt(i)))
-				valueArray[i] = Character.toUpperCase(value.charAt(i));
+				valueToModify.append(Character.toUpperCase(value.charAt(i)));
 			else
-				valueArray[i] = Character.toLowerCase(value.charAt(i));
+				valueToModify.append(Character.toLowerCase(value.charAt(i)));
 		}
 		
-		return String.valueOf(valueArray);
+		return valueToModify.toString();
 	}
 	
 	public static String reverseString (String value) {
-		char[] valueArray = new char[value.length()];
+		StringBuilder reversedString = new StringBuilder();
 		
 		int i = 0;
 		while (i < value.length()) {
-			valueArray[i] = value.charAt(value.length() - i - 1);
+			reversedString.append(value.charAt(value.length() - i - 1));
 			i++;
 		}
 		
-		return String.valueOf(valueArray);
+		return reversedString.toString();
 	}
 	
 	public static int countWords(String value, String[] searchWords) {
