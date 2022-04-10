@@ -8,11 +8,12 @@ public class WorkingWithStrings {
 		Scanner input = new Scanner(System.in); // Sets up scanner
 		String[] searchWords = new String[] { "be", "the" }; // Creates array of words to check for from the user's input
 		
-		welcome(); // Calls welcome method which prints ascii art
+		welcome(); // Calls welcome method which prints ASCII art
 		
 		
 		System.out.println("Please enter a word with an even number of letters, or a phrase (up to 6 words):"); // Asks user for input
 		String userInput = input.nextLine().trim().replaceAll("\\s+", " "); // Takes user input, removes leading & trailing whitespaces, and ensures that all spaces are of a consistent length
+		StringBuilder myString = new StringBuilder();
 		
 		input.close();
 		
@@ -25,10 +26,10 @@ public class WorkingWithStrings {
 			System.out.println("           Upper: " + userInput.toUpperCase());
 			System.out.println("           Lower: " + userInput.toLowerCase());
 			System.out.println("         # Words: " + countWords(userInput));
-			System.out.println("        Alt Case: " + alternateCase(userInput));
+			System.out.println("        Alt Case: " + alternateCase(userInput, myString));
 			System.out.println("        # Vowels: " + countVowels(userInput));
-			System.out.println("      Vowel Case: " + vowelToUpper(userInput));
-			System.out.println("         Reverse: " + reverseString(userInput));
+			System.out.println("      Vowel Case: " + vowelToUpper(userInput, myString));
+			System.out.println("         Reverse: " + reverseString(userInput, myString));
 			System.out.println("  Be's and The's: " + countWords(userInput, searchWords));
 		}
 		else if (userInput.length() % 2 == 0) {
@@ -37,10 +38,6 @@ public class WorkingWithStrings {
 		else {
 			System.out.println("Please enter a valid input");
 		}
-		
-		StringBuilder myString = new StringBuilder();
-		myString.append("");
-		System.out.println(myString.toString());
 	}
 
 	public static int countWords(String value) {
@@ -51,19 +48,20 @@ public class WorkingWithStrings {
 		return wordcount;
 	}
 	
-	public static String alternateCase(String value) {
-		StringBuilder alternatedString = new StringBuilder(value.length());
+	public static String alternateCase(String value, StringBuilder stringBuilder) {
+		
+		stringBuilder.setLength(0);
 		
 		for (int i = 0; i < value.length(); i++) {
 			if (i % 2 == 0) {
-				alternatedString.append(Character.toUpperCase(value.charAt(i)));
+				stringBuilder.insert(i, Character.toUpperCase(value.charAt(i)));
 			}
 			else {
-				alternatedString.append(Character.toLowerCase(value.charAt(i)));
+				stringBuilder.insert(i, Character.toLowerCase(value.charAt(i)));
 			}
 		}
 		
-		return alternatedString.toString();
+		return stringBuilder.toString();
 	}
 	
 	public static boolean isVowel(char value) {
@@ -81,29 +79,31 @@ public class WorkingWithStrings {
 		return vowelCount;
 	}
 	
-	public static String vowelToUpper (String value) {
-		StringBuilder valueToModify = new StringBuilder(value.length());
+	public static String vowelToUpper (String value, StringBuilder stringBuilder) {
+		
+		stringBuilder.setLength(0);
 		
 		for (int i = 0; i < value.length(); i++) {
 			if (isVowel(value.charAt(i)))
-				valueToModify.append(Character.toUpperCase(value.charAt(i)));
+				stringBuilder.insert(i, Character.toUpperCase(value.charAt(i)));
 			else
-				valueToModify.append(Character.toLowerCase(value.charAt(i)));
+				stringBuilder.insert(i, Character.toLowerCase(value.charAt(i)));
 		}
 		
-		return valueToModify.toString();
+		return stringBuilder.toString();
 	}
 	
-	public static String reverseString (String value) {
-		StringBuilder reversedString = new StringBuilder();
+	public static String reverseString (String value, StringBuilder stringBuilder) {
+		
+		stringBuilder.setLength(0);
 		
 		int i = 0;
 		while (i < value.length()) {
-			reversedString.append(value.charAt(value.length() - i - 1));
+			stringBuilder.insert(i, value.charAt(value.length() - i - 1));
 			i++;
 		}
 		
-		return reversedString.toString();
+		return stringBuilder.toString();
 	}
 	
 	public static int countWords(String value, String[] searchWords) {
@@ -141,11 +141,12 @@ public class WorkingWithStrings {
 	                                    	"		⢀⠤⠒⠒⢼⣿⣿⠶⠞⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀⣼⠃",
 	                                    	"		⢮⠀⠀⠀⠀⣿⣿⣆⠀⠀⠻⣿⡿⠛⠉⠉⠁⠀⠉⠉⠛⠿⣿⣿⠟⠁⠀⣼⠃⠀",
 	                                    	"		⠈⠓⠶⣶⣾⣿⣿⣿⣧⡀⠀⠈⠒⢤⣀⣀⡀⠀⠀⣀⣀⡠⠚⠁⠀⢀⡼⠃⠀⠀",
-											"		⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣷⣤⣤⣤⣤⣭⣭⣭⣭⣭⣥⣤⣤⣤⣴⣟⠁"};
+											"		⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣷⣤⣤⣤⣤⣭⣭⣭⣭⣭⣥⣤⣤⣤⣴⣟⠁"     };
 		
 		for (int i = 0; i < asciiArt.length; i++) {
 			System.out.println(asciiArt[i]);
 		}
+		
 		System.out.println();
 		System.out.println("Welcome to Change That Message");
 		System.out.println();
