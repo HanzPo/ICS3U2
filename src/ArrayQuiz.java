@@ -60,4 +60,13 @@ public class ArrayQuiz {
 		
 		return (double) sum / highNums;
 	}
+	
+	public static int areaRect(int length, int width) {
+		return length * width;
+	}
+	
+	public static int areaRect(int length) {
+		return length * length;
+	}
+	
 }
